@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="theme-color" content="#090a10" />
+  <title>Death Combat — Enter the Arena</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Death Combat home"><span class="brand-mark">D</span><span>DEATH<span class="brand-light">COMBAT</span></span></a>
+      <div class="top-center"><span class="live-dot"></span> ARCADE MODE <i>•</i> THE PIT</div>
+      <button class="sound-button" id="soundToggle" aria-label="Toggle sound"><span id="soundIcon">♫</span><span class="sound-label">SOUND ON</span></button>
+    </header>
+
+    <section class="game-frame" aria-label="Death Combat fighting game">
+      <div class="screen-topline"><span>FIGHTER 01 <b>SCORPION</b></span><span class="round-label">ROUND <b id="roundNumber">01</b></span><span>FIGHTER 02 <b>SUB-ZERO</b></span></div>
+      <div class="hud">
+        <div class="fighter-hud left-hud"><div class="name-row"><span class="fighter-name">SCORPION</span><span class="wins">WINS <b id="pWins">0</b></span></div><div class="health-track"><div class="health-fill player-health" id="playerHealth"></div></div><div class="meter-track"><div class="meter-fill" id="playerMeter"></div></div></div>
+        <div class="timer" id="timer">99</div>
+        <div class="fighter-hud right-hud"><div class="name-row"><span class="wins">WINS <b id="eWins">0</b></span><span class="fighter-name">SUB-ZERO</span></div><div class="health-track"><div class="health-fill enemy-health" id="enemyHealth"></div></div><div class="meter-track"><div class="meter-fill enemy-meter" id="enemyMeter"></div></div></div>
+      </div>
+      <div class="canvas-wrap"><canvas id="game" width="960" height="500" aria-label="Fight arena"></canvas><div class="round-banner" id="banner"><span class="banner-kicker">THE PIT</span><strong id="bannerTitle">ROUND ONE</strong><span id="bannerSub">READY YOURSELF</span></div><div class="hit-flash" id="hitFlash"></div></div>
+      <div class="arena-footer"><span><i class="tiny-star">✦</i> THE PIT <span class="muted">— OUTWORLD</span></span><span id="fightStatus">FIGHT!</span><span>BEST OF <b>3</b></span></div>
+      <div class="combo-toast" id="comboToast"></div>
+    </section>
+
+    <section class="controls-layout">
+      <div class="control-side movement-side">
+        <div class="control-heading"><span>MOVE</span><small>WASD / ARROWS</small></div>
+        <div class="dpad" id="dpad" aria-label="Directional pad">
+          <button class="dir up-left" data-key="up-left" aria-label="Up left">↖</button><button class="dir up" data-key="up" aria-label="Up">↑</button><button class="dir up-right" data-key="up-right" aria-label="Up right">↗</button>
+          <button class="dir left" data-key="left" aria-label="Left">←</button><span class="dpad-center"><span>DC</span></span><button class="dir right" data-key="right" aria-label="Right">→</button>
+          <button class="dir down-left" data-key="down-left" aria-label="Down left">↙</button><button class="dir down" data-key="down" aria-label="Down">↓</button><button class="dir down-right" data-key="down-right" aria-label="Down right">↘</button>
+        </div>
+        <div class="control-hint">HOLD <b>↓</b> TO CROUCH <span>•</span> HOLD <b>SPACE</b> TO BLOCK</div>
+      </div>
+      <div class="command-center">
+        <div class="control-heading"><span>FIGHTER COMMANDS</span><small>KEYBOARD + TOUCH</small></div>
+        <div class="action-grid">
+          <button class="action-button punch" data-action="hp"><kbd>J</kbd><span><b>HIGH PUNCH</b><small>J</small></span><i>✦</i></button>
+          <button class="action-button punch" data-action="lp"><kbd>K</kbd><span><b>LOW PUNCH</b><small>K</small></span><i>✦</i></button>
+          <button class="action-button kick" data-action="hk"><kbd>U</kbd><span><b>HIGH KICK</b><small>U</small></span><i>✦</i></button>
+          <button class="action-button kick" data-action="lk"><kbd>I</kbd><span><b>LOW KICK</b><small>I</small></span><i>✦</i></button>
+          <button class="action-button special" data-action="special"><kbd>O</kbd><span><b>SPECIAL</b><small>FREEZE / HARPOON</small></span><i>◈</i></button>
+          <button class="action-button run" data-action="run"><kbd>⇧</kbd><span><b>RUN</b><small>SHIFT</small></span><i>»</i></button>
+          <button class="action-button block" data-action="block"><kbd>␣</kbd><span><b>BLOCK</b><small>HOLD SPACE</small></span><i>▰</i></button>
+        </div>
+        <div class="combo-tip"><span class="combo-icon">⌁</span><span><b>DIAL-A-COMBO</b><small>Chain strikes quickly — timing is everything.</small></span><span class="combo-example">J · J · U <b>→</b></span></div>
+      </div>
+      <div class="control-side specials-side">
+        <div class="control-heading"><span>FINISH THEM</span><small>CLASSIC MOVES</small></div>
+        <div class="move-list"><div><span class="move-icon fire">✦</span><span><b>HELLFIRE</b><small>↓ ↘ → + J</small></span></div><div><span class="move-icon ice">❄</span><span><b>ICE BLAST</b><small>← → + J</small></span></div><div><span class="move-icon spear">➶</span><span><b>SPEAR THROW</b><small>← ← + J</small></span></div><div><span class="move-icon rocket">➤</span><span><b>ROCKET THROW</b><small>↓ → + U</small></span></div></div>
+        <p class="drag-note"><span>⤧</span> DRAG CONTROLS TO REPOSITION</p>
+      </div>
+    </section>
+    <footer class="page-footer"><span>© 2025 DEATH COMBAT</span><span>ONE SPRITE. INFINITE RIVALS.</span><button id="resetButton">↻ &nbsp;RESTART MATCH</button></footer>
+  </main>
+  <div class="mobile-hint" id="mobileHint">Touch controls are ready · drag to reposition</div>
+  <script src="game.js"></script>
+</body>
+</html>
